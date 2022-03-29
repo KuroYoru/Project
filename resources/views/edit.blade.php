@@ -1,36 +1,31 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Edit Book Details</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    </head>
-    <body>
-        <h2>Edit Book Details</h2><br />
-        <form method="post" action="{{action('BookController@update', $id)}}">
-            @csrf
-            <input name="_method" type="hidden" value="PATCH">
-            <p>
-                <label for="code">Book Code: </label>
-                <input type="text" name="code" value="{{$book->code}}">
-            </p>
-            <p>
-                <label for="name">Book Name: </label>
-                <input type="text" name="name" value="{{$book->name}}">
-            </p>
-            <p>
-                <label for="name">Book Description: </label>
-                <input type="text" name="desc" value="{{$book->name}}">
-            </p>
-            <p>
-                <button type="submit" style="margin-left:38px">Update</button>
-            </p>
-         </form>
-        
-    </body>
-</html>
+@extends('layout')
+@section('title','Edit Book')
+@section('content')
+
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h2 style="align-content: ">Edit Book Details</h2><br/>
+    <form method="post" action="{{action('BookController@update', $id)}}">
+        @csrf
+        <input name="_method" type="hidden" value="PATCH">
+        <div class="form-group">
+            <label for="code">Book Code: </label>
+            <input class="form-control" type="text" name="code" value="{{$book->bookCode}}">
+        </div>
+        <div class="form-group">
+            <label for="name">Book Name: </label>
+            <input class="form-control" type="text" name="name" value="{{$book->bookName}}">
+        </div>
+        <div class="form-group">
+            <label for="name">Book Description: </label>
+            <input class="form-control" type="text" name="desc" value="{{$book->bookDesc}}">
+        </div>
+        <br>
+            <button type="submit" class="btn btn-warning" >Update</button>
+            <a href="{{action('BookController@index')}}" class="btn btn-danger">Back</a>
+    </form>
+
+
+@endsection

@@ -1,30 +1,31 @@
 <!DOCTYPE html>
+@extends('layout')
+@section('title','Create')
+@section('content')
 
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Add New Book</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    </head>
-    <body>
-        <h2>Add New Book</h2><br/>
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h2 style="align-content: ">Add New Book</h2><br/>
         <form method="post" action="{{url('books')}}">
             @csrf
-            <p>
+            <div class="form-group">
                 <label for="bookCode">Book Code:</label>
-                <input type="text" name="code">
-            </p>
-            <p>
+                <input class="form-control" type="text" name="code" required>
+            </div>
+            <div class="form-group">
                 <label for="bookName">Book Name:</label>
-                <input type="text" name="name">
-            </p>
-            <p>
+                <input class="form-control" type="text" name="name" required>
+            </div>
+            <div class="form-group">
                 <label for="bookDesc">Book Description:</label>
-                <input type="text" name="desc">
-            </p>
-            <p>
-                <button type="submit">Submit</button>
-            </p>
+                <input class="form-control" type="text" name="desc" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
         </form>
-    </body>
-</html>
+    </div>
+</div>
+
+@endsection
