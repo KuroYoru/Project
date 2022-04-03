@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use DB;
+use Illuminate\Support\Facades\Gate;
+
 
 class BookController extends Controller {
 
@@ -38,6 +40,7 @@ class BookController extends Controller {
         $book->bookCode = $request->get('code');
         $book->bookName = $request->get('name');
         $book->bookDesc = $request->get('desc');
+        $book->bookPrivilege = $request->get('priv');
         $book->save();
         return redirect('books')->with('success', 'a new book has been added');
     }
@@ -71,12 +74,13 @@ class BookController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        $book = Book::find($id);
-        $book->bookCode = $request->get('code');
-        $book->bookName = $request->get('name');
-        $book->bookDesc = $request->get('desc');
-        $book->save();
-        return redirect('books');
+
+            $book = Book::find($id);
+            $book->bookCode = $request->get('code');
+            $book->bookName = $request->get('name');
+            $book->bookDesc = $request->get('desc');
+            $book->save();
+            return redirect('books');
     }
 
     /**
@@ -88,12 +92,13 @@ class BookController extends Controller {
     public function destroy($id) {
         $book = Book::find($id);
         $book->delete();
-        return redirect('books')->with('Success', 'a book has been deleted');
+        return redirect('books')->with('Success', 'A book has been deleted');
     }
 
     public function search(Request $request) {
         $search = $request->get('search');
-        $books = DB::table('books')->where('bookName', 'like', '%'.$search.'%')->paginate(5);
-        return view ('index', ['books' => $books]);
+        $books = DB::table('books')->where('bookName', 'like', '%' . $search . '%')->paginate(5);
+        return view('index', ['books' => $books]);
     }
+
 }
