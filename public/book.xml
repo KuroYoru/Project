@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="book.xsl"?>
+
+
+<books>
+    <book>
+        <id>200</id>
+        <bookCode>200</bookCode>
+        <bookName>Book of XML 1</bookName>
+        <bookDesc>Book about XML 1</bookDesc>
+        <bookPrivilege>1</bookPrivilege>
+        <userID>1</userID>
+        <created_at>2022-04-02 10:24:54</created_at>
+        <updated_at>2022-04-02 10:24:54</updated_at>
+    </book>
+    <book>
+        <id>201</id>
+        <bookCode>201</bookCode>
+        <bookName>Book of XML 2</bookName>
+        <bookDesc>Book about XML 2</bookDesc>
+        <bookPrivilege>2</bookPrivilege>
+        <userID>1</userID>
+        <created_at>2022-04-02 10:24:54</created_at>
+        <updated_at>2022-04-02 10:24:54</updated_at>
+    </book>
+    <book>
+        <id>202</id>
+        <bookCode>202</bookCode>
+        <bookName>Book of XML 3</bookName>
+        <bookDesc>Book about XML 3</bookDesc>
+        <bookPrivilege>0</bookPrivilege>
+        <userID>1</userID>
+        <created_at>2022-04-02 10:24:54</created_at>
+        <updated_at>2022-04-02 10:24:54</updated_at>
+    </book>
+        <book>
+        <id>203</id>
+        <bookCode>203</bookCode>
+        <bookName>Book of XML 4</bookName>
+        <bookDesc>Book about XML 4</bookDesc>
+        <bookPrivilege>1</bookPrivilege>
+        <userID>1</userID>
+        <created_at>2022-04-02 10:24:54</created_at>
+        <updated_at>2022-04-02 10:24:54</updated_at>
+    </book>
+    
+</books>

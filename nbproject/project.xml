@@ -7,6 +7,7 @@
         </data>
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
             <word>elseif</word>
+            <word>endforeach</word>
             <word>endsection</word>
             <word>Privil</word>
         </spellchecker-wordlist>

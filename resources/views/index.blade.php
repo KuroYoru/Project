@@ -27,7 +27,9 @@
         </div>
 
         <div class="col-md-2 text-right">
+            @if (auth()->check() && auth()->user()->memberStatus)
             <a href="{{action('BookController@create')}}" class="btn btn-primary">Add New Book</a>
+            @endif
         </div>
     </div>
     <br>
@@ -55,9 +57,12 @@
                 <td>{{$book->bookDesc}}</td>
                 <td>{{$book->bookPrivilege}}</td>
                 <td> 
+                    @if (auth()->check() && auth()->user()->memberStatus >= 0)
+                    @csrf
                     <a href="{{action('BookController@edit', $book->id)}}" class="btn btn-primary">Rent</a>
+                    @endif
+                    <a href="{{action('BookController@show', $book->id)}}" class="btn btn-primary">Show Details</a>
                     @if (auth()->check() && auth()->user()->memberStatus)
-
                     <form action="{{action('BookController@destroy',$book->id)}}" method="post">      
                         <a href="{{action('BookController@edit', $book->id)}}" class="btn btn-warning">Edit</a>
                         @csrf

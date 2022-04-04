@@ -7,7 +7,6 @@ use App\Models\Book;
 use DB;
 use Illuminate\Support\Facades\Gate;
 
-
 class BookController extends Controller {
 
     /**
@@ -16,8 +15,12 @@ class BookController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $books = DB::table('books')->paginate(10);
+        $books = DB::table('books')->paginate(6);
         return view('index', ['books' => $books]);
+    }
+
+    public function indexList() {
+        
     }
 
     /**
@@ -51,9 +54,12 @@ class BookController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
-        //
-    }
+        public function show($id) {
+            $books = DB::select('select * from books where id=?', [$id]);
+            return view('show', ['books'=>$books]);
+        }
+        
+
 
     /**
      * Show the form for editing the specified resource.
@@ -75,12 +81,12 @@ class BookController extends Controller {
      */
     public function update(Request $request, $id) {
 
-            $book = Book::find($id);
-            $book->bookCode = $request->get('code');
-            $book->bookName = $request->get('name');
-            $book->bookDesc = $request->get('desc');
-            $book->save();
-            return redirect('books');
+        $book = Book::find($id);
+        $book->bookCode = $request->get('code');
+        $book->bookName = $request->get('name');
+        $book->bookDesc = $request->get('desc');
+        $book->save();
+        return redirect('books');
     }
 
     /**
@@ -99,6 +105,16 @@ class BookController extends Controller {
         $search = $request->get('search');
         $books = DB::table('books')->where('bookName', 'like', '%' . $search . '%')->paginate(5);
         return view('index', ['books' => $books]);
+    }
+    
+        public function bookXML() {
+        $xmlString = file_get_contents(public_path('book.xml'));
+        $xmlObject = simplexml_load_string($xmlString);
+
+        $json = json_encode($xmlObject);
+        $phpArray = json_decode($json, true);
+
+        dd($phpArray);
     }
 
 }
