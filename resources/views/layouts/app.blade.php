@@ -67,7 +67,7 @@
                     <i class="fa fa-bars"></i>
                 </a>
                 <a href="/home" class="w3-bar-item w3-button">HOME</a>
-                <a href="/books" class="w3-bar-item w3-button w3-hide-small"><i class="	fa fa-thumbs-o-up"></i> NEW ARRIVALS</a>
+                <a href="/" class="w3-bar-item w3-button w3-hide-small"><i class="	fa fa-thumbs-o-up"></i> NEW ARRIVALS</a>
                 <a href="/bookXML" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> CURRENT BOOKS LIST</a>
                 <a href="/checkout" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-shopping-cart"></i> CHECKOUT</a>
 

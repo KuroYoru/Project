@@ -16,11 +16,7 @@ class BookController extends Controller {
      */
     public function index() {
         $books = DB::table('books')->paginate(6);
-        return view('index', ['books' => $books]);
-    }
-
-    public function indexList() {
-        
+        return view('book.index', ['books' => $books]);
     }
 
     /**
@@ -29,7 +25,7 @@ class BookController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('create');
+        return view('book.create');
     }
 
     /**
@@ -45,7 +41,7 @@ class BookController extends Controller {
         $book->bookDesc = $request->get('desc');
         $book->bookPrivilege = $request->get('priv');
         $book->save();
-        return redirect('books')->with('success', 'a new book has been added');
+        return redirect('book.books')->with('success', 'a new book has been added');
     }
 
     /**
@@ -56,7 +52,7 @@ class BookController extends Controller {
      */
         public function show($id) {
             $books = DB::select('select * from books where id=?', [$id]);
-            return view('show', ['books'=>$books]);
+            return view('book.show', ['books'=>$books]);
         }
         
 
@@ -69,7 +65,7 @@ class BookController extends Controller {
      */
     public function edit($id) {
         $book = Book::find($id);
-        return view('edit', compact('book', 'id'));
+        return view('book.edit', compact('book', 'id'));
     }
 
     /**
@@ -98,13 +94,13 @@ class BookController extends Controller {
     public function destroy($id) {
         $book = Book::find($id);
         $book->delete();
-        return redirect('books')->with('Success', 'A book has been deleted');
+        return redirect('book.books')->with('Success', 'A book has been deleted');
     }
 
     public function search(Request $request) {
         $search = $request->get('search');
         $books = DB::table('books')->where('bookName', 'like', '%' . $search . '%')->paginate(5);
-        return view('index', ['books' => $books]);
+        return view('book.index', ['books' => $books]);
     }
     
         public function bookXML() {
