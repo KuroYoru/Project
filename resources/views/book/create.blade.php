@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-md-6 offset-md-3">
         <h2 style="align-content: ">Add New Book</h2><br/>
-        <form method="post" action="{{url('books')}}">
+        <form method="post" action="{{url('book/books')}}">
             @csrf
             <div class="form-group">
                 <label for="bookCode">Book Code:</label>

@@ -62,7 +62,7 @@
                     <a href="{{action('BookController@edit', $book->id)}}" class="btn btn-primary">Rent</a>
                     @endif
                     <a href="{{action('BookController@show', $book->id)}}" class="btn btn-primary">Show Details</a>
-                    @if (auth()->check() && auth()->user()->memberStatus)
+                    @if (auth()->check() && auth()->user()->memberStatus == 1)
                     <form action="{{action('BookController@destroy',$book->id)}}" method="post">      
                         <a href="{{action('BookController@edit', $book->id)}}" class="btn btn-warning">Edit</a>
                         @csrf

@@ -15,9 +15,10 @@ class BookController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $books = DB::table('books')->paginate(6);
+        $books = DB::table('books')->paginate(5);
         return view('book.index', ['books' => $books]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -41,7 +42,7 @@ class BookController extends Controller {
         $book->bookDesc = $request->get('desc');
         $book->bookPrivilege = $request->get('priv');
         $book->save();
-        return redirect('book.books')->with('success', 'a new book has been added');
+        return redirect('book/books')->with('success', 'A new book has been added');
     }
 
     /**
@@ -82,7 +83,7 @@ class BookController extends Controller {
         $book->bookName = $request->get('name');
         $book->bookDesc = $request->get('desc');
         $book->save();
-        return redirect('books');
+        return redirect('book/books');
     }
 
     /**
@@ -94,7 +95,7 @@ class BookController extends Controller {
     public function destroy($id) {
         $book = Book::find($id);
         $book->delete();
-        return redirect('book.books')->with('Success', 'A book has been deleted');
+        return redirect('book/books')->with('Success', 'A book has been deleted');
     }
 
     public function search(Request $request) {
