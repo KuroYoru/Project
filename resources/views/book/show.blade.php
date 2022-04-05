@@ -10,6 +10,10 @@
         <p class="card-text">Book Description: {{$book->bookDesc}}</p>
         <div class="card-title">Book Price (token): {{$book->bookPrice}}</div>
         <div class="card-title">Book Privilege: {{$book->bookPrivilege}}</div>
+        @if (auth()->check() && auth()->user()->memberStatus >= 0)
+        @csrf
+        <a href="{{action('BookController@buy', $book->id)}}" class="btn btn-primary">Buy</a>
+        @endif
         <a href="{{action('BookController@index')}}" class="btn btn-warning">Back</a>
     </div>
     @endforeach

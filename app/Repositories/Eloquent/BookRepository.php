@@ -7,8 +7,8 @@ use App\Repositories\Interfaces\BookRepositoryInterface;
 use Illuminate\Http\Request;
 use DB;
 
-class BookRepository implements BookRepositoryInterface{
-    
+class BookRepository implements BookRepositoryInterface {
+
     /**
      * Display a listing of the resource.
      *
@@ -125,13 +125,13 @@ class BookRepository implements BookRepositoryInterface{
                 <tbody>
                 <tr>
                 <td>" . $book->id . "</td>" .
-                "<td>" . $book->bookName . "</td>" .
-                "<td>" . $book->bookDesc . "</td>" .
-                "<td>" . $book->bookPrivilege . "</td>" .
-                "<td>" . $book->bookPrice . "</td>" .
-                "<td>" . $book->created_at . "</td>" .
-                "<td>" . $book->updated_at . "</td>" .
-                "</tr>
+            "<td>" . $book->bookName . "</td>" .
+            "<td>" . $book->bookDesc . "</td>" .
+            "<td>" . $book->bookPrivilege . "</td>" .
+            "<td>" . $book->bookPrice . "</td>" .
+            "<td>" . $book->created_at . "</td>" .
+            "<td>" . $book->updated_at . "</td>" .
+            "</tr>
                     ";
         }
 
@@ -139,6 +139,40 @@ class BookRepository implements BookRepositoryInterface{
                 </table>";
 
         return view('bookXML');
+    }
+
+    public function buy($id) {
+        $book = Book::find($id);
+        return view('book.buy', compact('book', 'id'));
+    }
+
+    public function bought(Request $request) {
+        $flag = 0;
+        $users_books = DB::select('select * from users_books');
+        $bookId = $request->get('bookID');
+        $userId = $request->get('userID');
+        if ($userId != null && $bookId != null) {
+            foreach ($users_books as $userbook) {
+                if ($userbook->userID == $userId && $userbook->bookID == $bookId) {
+                    $flag = 1;
+                }
+            }
+            $tokenCount = $request->get('userTokens');
+            $price = $request->get('price');
+            $finalTokenCount = $tokenCount - $price;
+            if ($flag == 1) {
+                $red = redirect('book/books')->with('Failed', 'You have already owned this book');
+            } else {
+                $posts = DB::insert('insert into users_books(userID, bookID) value (?, ?) ', [$userId, $bookId]);
+                $minusToken = DB::update('update users set tokens=? where id=?', [$finalTokenCount, $userId]);
+                if ($posts) {
+                    $red = redirect('book/books')->with('Success', 'You now own this book');
+                } else {
+                    $red = redirect('book/books')->with('Failed', 'Unexepected Error Occured');
+                }
+            }
+            return $red;
+        }
     }
 
 }

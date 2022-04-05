@@ -24,4 +24,8 @@ interface BookRepositoryInterface {
     public function search(Request $request);
 
     public function bookXML();
+
+    public function buy($id);
+
+    public function bought(Request $request);
 }

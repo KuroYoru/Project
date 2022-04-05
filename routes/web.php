@@ -20,7 +20,8 @@ Route::get('/', function () {
 Route::resource('book/books', 'BookController');
 Route::get('/', 'BookController@index');
 Route::get('/search','BookController@search');
-
+Route::get('book/books/{book}/buy','BookController@buy')->name('buy');
+Route::get('/', 'BookController@bought');
 Route::get('/book/bookXML', 'BookController@bookXML')->name('bookXML');
 
 Auth::routes();

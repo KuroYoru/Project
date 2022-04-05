@@ -5,10 +5,15 @@
 
 <div class="container">
     <br />
-    @if (\Session::has('success'))
+    @if ($message = Session::get('success'))
     <div class="alert alert-success">
-        <p>{{ \Session::get('success') }}</p>
+        <p>{{$message}}</p>
+   </div>
+    @elseif($message2 = Session::get('Failed'))
+    <div class="alert alert-danger">
+        <p>{{$message2}}</p>
     </div>
+
     @endif
 
     <div class="row">
@@ -51,10 +56,6 @@
                 <td>{{$book->bookPrice}}</td>
                 <td>{{$book->bookPrivilege}}</td>
                 <td> 
-                    @if (auth()->check() && auth()->user()->memberStatus >= 0)
-                    @csrf
-                    <a href="{{action('BookController@edit', $book->id)}}" class="btn btn-primary">Rent</a>
-                    @endif
                     <a href="{{action('BookController@show', $book->id)}}" class="btn btn-primary">Show Details</a>
                     @if (auth()->check() && auth()->user()->memberStatus == 1)
                     <form action="{{action('BookController@destroy',$book->id)}}" method="post">      

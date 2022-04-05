@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\Interfaces\BookRepositoryInterface;
+use Illuminate\Http\Request;
 
 class BookController extends Controller {
 
@@ -88,5 +89,12 @@ class BookController extends Controller {
     public function bookXML() {
         return $this->repository->bookXML();
     }
-
+    
+    public function buy($id){
+        return $this->repository->buy($id);
+    }
+    
+    public function  bought(Request $request){
+        return $this->repository->bought($request);
+    }
 }
