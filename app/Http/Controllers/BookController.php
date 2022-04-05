@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Book;
-use DB;
 use App\Repositories\Interfaces\BookRepositoryInterface;
 
 class BookController extends Controller {
