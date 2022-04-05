@@ -36,9 +36,9 @@ class BookController extends Controller {
      */
     public function store(Request $request) {
         $book = new Book();
-        $book->bookCode = $request->get('code');
         $book->bookName = $request->get('name');
         $book->bookDesc = $request->get('desc');
+        $book->bookPrice = $request->get('price');
         $book->bookPrivilege = $request->get('priv');
         $book->save();
         return redirect('book/books')->with('success', 'A new book has been added');
@@ -76,9 +76,10 @@ class BookController extends Controller {
     public function update(Request $request, $id) {
 
         $book = Book::find($id);
-        $book->bookCode = $request->get('code');
         $book->bookName = $request->get('name');
         $book->bookDesc = $request->get('desc');
+        $book->bookPrice = $request->get('price');
+        $book->bookPrivilege = $request->get('priv');
         $book->save();
         return redirect('book/books');
     }
@@ -110,13 +111,12 @@ class BookController extends Controller {
                 <thead>
                 <tr>
                 <th>ID</th>
-                <th>Book Code</th>
                 <th>Book Name</th>
                 <th>Book Description</th>
                 <th>Book Privilege</th>
-                <th>UserID</th>
-                <th>created_at</th>
-                <th>updated_at</th>
+                <th>Book Price (tokens)</th>
+                <th>Created At</th>
+                <th>Updated At</th>
                 </tr>
                 </thead>";
         foreach ($xmlObject as $book) {
@@ -125,15 +125,14 @@ class BookController extends Controller {
                 <tbody>
                 <tr>
                 <td>" . $book->id . "</td>" .
-            "<td>" . $book->bookCode . "</td>" .
-            "<td>" . $book->bookName . "</td>" .
-            "<td>" . $book->bookDesc . "</td>" .
-            "<td>" . $book->userID . "</td>" .
-            "<td>" . $book->bookPrivilege . "</td>" .
-            "<td>" . $book->created_at . "</td>" .
-            "<td>" . $book->updated_at . "</td>" .
-            "</tr>
-                ";
+                "<td>" . $book->bookName . "</td>" .
+                "<td>" . $book->bookDesc . "</td>" .
+                "<td>" . $book->bookPrivilege . "</td>" .
+                "<td>" . $book->bookPrice . "</td>" .
+                "<td>" . $book->created_at . "</td>" .
+                "<td>" . $book->updated_at . "</td>" .
+                "</tr>
+                    ";
         }
 
         echo"</tbody>

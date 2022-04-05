@@ -27,7 +27,7 @@
         </div>
 
         <div class="col-md-2 text-right">
-            @if (auth()->check() && auth()->user()->memberStatus)
+            @if (auth()->check() && auth()->user()->memberStatus ==1)
             <a href="{{action('BookController@create')}}" class="btn btn-primary">Add New Book</a>
             @endif
         </div>
@@ -36,12 +36,9 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                @if (auth()->check() && auth()->user()->memberStatus)
-                <th>ID</th>
-                @endif
-                <th>Book Code</th>
                 <th>Book Name</th>
                 <th>Book Description</th>
+                <th>Book Price (token)</th>
                 <th>Book Privilege</th>
                 <th>Action</th>
             </tr>
@@ -49,12 +46,9 @@
         <tbody>
             @foreach($books as $book)
             <tr>
-                @if (auth()->check() && auth()->user()->memberStatus)
-                <td>{{$book->id}}</td>
-                @endif
-                <td>{{$book->bookCode}}</td>
                 <td>{{$book->bookName}}</td>
                 <td>{{$book->bookDesc}}</td>
+                <td>{{$book->bookPrice}}</td>
                 <td>{{$book->bookPrivilege}}</td>
                 <td> 
                     @if (auth()->check() && auth()->user()->memberStatus >= 0)
