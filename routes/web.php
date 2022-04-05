@@ -21,7 +21,7 @@ Route::resource('book/books', 'BookController');
 Route::get('/', 'BookController@index');
 Route::get('/search','BookController@search');
 
-Route::get('bookXML', [App\Http\Controllers\BookController::class, 'bookXML'])->name('bookXML');
+Route::get('/book/bookXML', 'BookController@bookXML')->name('bookXML');
 
 Auth::routes();
 

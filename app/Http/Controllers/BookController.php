@@ -19,7 +19,6 @@ class BookController extends Controller {
         return view('book.index', ['books' => $books]);
     }
 
-
     /**
      * Show the form for creating a new resource.
      *
@@ -51,12 +50,10 @@ class BookController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-        public function show($id) {
-            $books = DB::select('select * from books where id=?', [$id]);
-            return view('book.show', ['books'=>$books]);
-        }
-        
-
+    public function show($id) {
+        $books = DB::select('select * from books where id=?', [$id]);
+        return view('book.show', ['books' => $books]);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -103,15 +100,46 @@ class BookController extends Controller {
         $books = DB::table('books')->where('bookName', 'like', '%' . $search . '%')->paginate(5);
         return view('book.index', ['books' => $books]);
     }
-    
-        public function bookXML() {
+
+    public function bookXML() {
         $xmlString = file_get_contents(public_path('book.xml'));
         $xmlObject = simplexml_load_string($xmlString);
+        echo"<br><br><br><br>";
 
-        $json = json_encode($xmlObject);
-        $phpArray = json_decode($json, true);
+        echo "<table border='1' cellpadding='10'>
+                <thead>
+                <tr>
+                <th>ID</th>
+                <th>Book Code</th>
+                <th>Book Name</th>
+                <th>Book Description</th>
+                <th>Book Privilege</th>
+                <th>UserID</th>
+                <th>created_at</th>
+                <th>updated_at</th>
+                </tr>
+                </thead>";
+        foreach ($xmlObject as $book) {
 
-        dd($phpArray);
+            echo "
+                <tbody>
+                <tr>
+                <td>" . $book->id . "</td>" .
+            "<td>" . $book->bookCode . "</td>" .
+            "<td>" . $book->bookName . "</td>" .
+            "<td>" . $book->bookDesc . "</td>" .
+            "<td>" . $book->userID . "</td>" .
+            "<td>" . $book->bookPrivilege . "</td>" .
+            "<td>" . $book->created_at . "</td>" .
+            "<td>" . $book->updated_at . "</td>" .
+            "</tr>
+                ";
+        }
+
+        echo"</tbody>
+                </table>";
+
+        return view('bookXML');
     }
 
 }

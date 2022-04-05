@@ -14,6 +14,16 @@
         <updated_at>2022-04-02 10:24:54</updated_at>
     </book>
     <book>
+        <id>204</id>
+        <bookCode>204</bookCode>
+        <bookName>Harry Potter</bookName>
+        <bookDesc>Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley, all of whom are students at Hogwarts School of Witchcraft and Wizardry.</bookDesc>
+        <bookPrivilege>1</bookPrivilege>
+        <userID>1</userID>
+        <created_at>2022-04-02 10:24:54</created_at>
+        <updated_at>2022-04-02 10:24:54</updated_at>
+    </book>
+    <book>
         <id>201</id>
         <bookCode>201</bookCode>
         <bookName>Book of XML 2</bookName>
@@ -33,7 +43,7 @@
         <created_at>2022-04-02 10:24:54</created_at>
         <updated_at>2022-04-02 10:24:54</updated_at>
     </book>
-        <book>
+    <book>
         <id>203</id>
         <bookCode>203</bookCode>
         <bookName>Book of XML 4</bookName>
@@ -43,5 +53,5 @@
         <created_at>2022-04-02 10:24:54</created_at>
         <updated_at>2022-04-02 10:24:54</updated_at>
     </book>
-    
+
 </books>
