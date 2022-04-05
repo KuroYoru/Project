@@ -8,6 +8,8 @@
     <div class="card-body " >
         <div class="card-title">Book Name: {{$book->bookName}}</div>
         <p class="card-text">Book Description: {{$book->bookDesc}}</p>
+        <div class="card-title">Book Price (token): {{$book->bookPrice}}</div>
+        <div class="card-title">Book Privilege: {{$book->bookPrivilege}}</div>
         <a href="{{action('BookController@index')}}" class="btn btn-warning">Back</a>
     </div>
     @endforeach
