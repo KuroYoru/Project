@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<ownedbooks>
+  <ownedbook>
+    <userID>1</userID>
+    <bookID>4</bookID>
+  </ownedbook>
+  <ownedbook>
+    <userID>103</userID>
+    <bookID>4</bookID>
+  </ownedbook>
+  <ownedbook>
+    <userID>103</userID>
+    <bookID>6</bookID>
+  </ownedbook>
+</ownedbooks>

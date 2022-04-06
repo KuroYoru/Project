@@ -6,6 +6,8 @@ use App\Models\Book;
 use App\Repositories\Interfaces\BookRepositoryInterface;
 use Illuminate\Http\Request;
 use DB;
+use DOMDocument;
+use XSLTProcessor;
 
 class BookRepository implements BookRepositoryInterface {
 
@@ -103,41 +105,17 @@ class BookRepository implements BookRepositoryInterface {
     }
 
     public function bookXML() {
-        $xmlString = file_get_contents(public_path('book.xml'));
-        $xmlObject = simplexml_load_string($xmlString);
-        echo"<br><br><br><br>";
-
-        echo "<table border='1' cellpadding='10'>
-                <thead>
-                <tr>
-                <th>ID</th>
-                <th>Book Name</th>
-                <th>Book Description</th>
-                <th>Book Privilege</th>
-                <th>Book Price (tokens)</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-                </tr>
-                </thead>";
-        foreach ($xmlObject as $book) {
-
-            echo "
-                <tbody>
-                <tr>
-                <td>" . $book->id . "</td>" .
-            "<td>" . $book->bookName . "</td>" .
-            "<td>" . $book->bookDesc . "</td>" .
-            "<td>" . $book->bookPrivilege . "</td>" .
-            "<td>" . $book->bookPrice . "</td>" .
-            "<td>" . $book->created_at . "</td>" .
-            "<td>" . $book->updated_at . "</td>" .
-            "</tr>
-                    ";
-        }
-
-        echo"</tbody>
-                </table>";
-
+        echo "<br><br><br>";
+        $xmlString = new DOMDocument('1.0', 'UTF-8');
+        $xmlString->load('book.xml');
+        $xslString = new DOMDocument('1.0', 'UTF-8');
+        $xslString->load('book.xsl');
+        $xslt = new XSLTProcessor();
+        $xslt->importStyleSheet($xslString);
+        $xmldoc = new DOMDocument('1.0', 'UTF-8');
+        $xmldoc->load("book.xml");
+        print $xslt->transformToXML($xmldoc);
+        
         return view('bookXML');
     }
 
@@ -173,6 +151,51 @@ class BookRepository implements BookRepositoryInterface {
             }
             return $red;
         }
+    }
+
+public function OwnedBookXML() {
+
+        $query = DB::select('select * from users_books');
+        $booksArray = array();
+        if ($result = $query) {
+            echo "<br><br><br>";
+            $this->subSystemCreateXML($query);
+            $this->loadXMLtoXSLT();
+            return view('showOwnedBookXML');
+        }
+        else{
+            echo "error";
+            return redirect('book/books');
+        }
+    }
+
+    public function subSystemCreateXML($query){
+            $xml = new DOMDocument("1.0");
+            $xml->formatOutput= true;
+            $userbook=$xml->createElement("ownedbooks");
+            $xml->appendChild($userbook);
+            foreach($query as $row){
+                $ownedbook=$xml->createElement("ownedbook");
+                $userbook->appendChild($ownedbook);
+                $rowArray = (array)$row;
+                $userID = $xml->createElement("userID", $rowArray['userID']);
+                $ownedbook->appendChild($userID);
+
+                $bookID = $xml->createElement("bookID", $rowArray['bookID']);
+                $ownedbook->appendChild($bookID);
+            }
+            $xml->save("ownedBook.xml");
+    }
+
+    public function loadXMLtoXSLT(){
+        $xsl = new DOMDocument('1.0','UTF-8');
+            $xsl->load("ownedBook.xsl");
+            $xslt = new XSLTProcessor();
+            $xslt->importStyleSheet($xsl);
+            $xmldoc = new DOMDocument('1.0','UTF-8');
+            $xmldoc->load("ownedBook.xml");
+            print $xslt->transformToXML($xmldoc);
+            
     }
 
 }

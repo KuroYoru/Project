@@ -28,4 +28,6 @@ interface BookRepositoryInterface {
     public function buy($id);
 
     public function bought(Request $request);
+    
+    public function OwnedBookXML();
 }

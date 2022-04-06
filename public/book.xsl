@@ -8,19 +8,17 @@
     <xsl:template match="/">
         <html>
             <head>
-                <title>Book List</title>
+                <title>Current Books List</title>
             </head>
             <body>
-                <h1>Book List</h1>
+                <h1>Current Books List</h1>
                 <hr />
                 <table border="1">
                     <tr bgcolor="#9acd32">
                         <th>ID</th>
-                        <th>Book Code</th>
                         <th>Book Name</th>
                         <th>Book Description</th>
                         <th>Book Privilege</th>
-                        <th>User ID</th>
                         <th>Created At</th>
                         <th>Updated At</th>
 
@@ -32,9 +30,7 @@
                             <td>
                                 <xsl:value-of select="id"/>
                             </td>
-                            <td>
-                                <xsl:value-of select="bookCode"/>
-                            </td>
+
                             <td>
                                 <xsl:value-of select="bookName"/>
                             </td>
@@ -43,9 +39,6 @@
                             </td>
                             <td>
                                 <xsl:value-of select="bookPrivilege"/>
-                            </td>
-                            <td>
-                                <xsl:value-of select="userID"/>
                             </td>
                             <td>
                                 <xsl:value-of select="created_at"/>
@@ -57,6 +50,8 @@
                         </tr>
                     </xsl:for-each>
                 </table>
+                <br></br>
+                <a href="{{action('BookController@index')}}" class=" btn btn-warning">Back</a>
             </body>
         </html>
     </xsl:template>
