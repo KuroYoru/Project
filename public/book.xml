@@ -1,52 +1,66 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="book.xsl"?>
-
-
+<?xml version="1.0"?>
 <books>
-    <book>
-        <id>200</id>
-        <bookName>Book of XML 1</bookName>
-        <bookDesc>Book about XML 1</bookDesc>
-        <bookPrivilege>1</bookPrivilege>
-        <bookPrice>50</bookPrice>
-        <created_at>2022-04-02 10:24:54</created_at>
-        <updated_at>2022-04-02 10:24:54</updated_at>
-    </book>
-    <book>
-        <id>204</id>
-        <bookName>Harry Potter</bookName>
-        <bookDesc>Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley, all of whom are students at Hogwarts School of Witchcraft and Wizardry.</bookDesc>
-        <bookPrivilege>1</bookPrivilege>
-        <bookPrice>40</bookPrice>
-        <created_at>2022-04-02 10:24:54</created_at>
-        <updated_at>2022-04-02 10:24:54</updated_at>
-    </book>
-    <book>
-        <id>201</id>
-        <bookName>Book of XML 2</bookName>
-        <bookDesc>Book about XML 2</bookDesc>
-        <bookPrivilege>2</bookPrivilege>
-        <bookPrice>30</bookPrice>
-        <created_at>2022-04-02 10:24:54</created_at>
-        <updated_at>2022-04-02 10:24:54</updated_at>
-    </book>
-    <book>
-        <id>202</id>
-        <bookName>Book of XML 3</bookName>
-        <bookDesc>Book about XML 3</bookDesc>
-        <bookPrivilege>0</bookPrivilege>
-        <bookPrice>10</bookPrice>
-        <created_at>2022-04-02 10:24:54</created_at>
-        <updated_at>2022-04-02 10:24:54</updated_at>
-    </book>
-    <book>
-        <id>203</id>
-        <bookName>Book of XML 4</bookName>
-        <bookDesc>Book about XML 4</bookDesc>
-        <bookPrivilege>1</bookPrivilege>
-        <bookPrice>20</bookPrice>
-        <created_at>2022-04-02 10:24:54</created_at>
-        <updated_at>2022-04-02 10:24:54</updated_at>
-    </book>
-
+  <book>
+    <id>4</id>
+    <bookName>Book of DOM</bookName>
+    <bookDesc>Book about DOM</bookDesc>
+    <bookPrivilege>0</bookPrivilege>
+    <bookPrice>50</bookPrice>
+    <created_at>2022-03-25 09:35:13</created_at>
+    <updated_at>2022-04-04 02:06:04</updated_at>
+  </book>
+  <book>
+    <id>6</id>
+    <bookName>This is a book</bookName>
+    <bookDesc>A book</bookDesc>
+    <bookPrivilege>0</bookPrivilege>
+    <bookPrice>50</bookPrice>
+    <created_at>2022-03-29 05:29:17</created_at>
+    <updated_at>2022-04-04 02:16:17</updated_at>
+  </book>
+  <book>
+    <id>10</id>
+    <bookName>book of privilege 1</bookName>
+    <bookDesc>book of privilege 1</bookDesc>
+    <bookPrivilege>1</bookPrivilege>
+    <bookPrice>50</bookPrice>
+    <created_at>2022-04-02 10:04:34</created_at>
+    <updated_at>2022-04-02 10:04:34</updated_at>
+  </book>
+  <book>
+    <id>12</id>
+    <bookName>book of privilege 2</bookName>
+    <bookDesc>book of privilege 2</bookDesc>
+    <bookPrivilege>2</bookPrivilege>
+    <bookPrice>50</bookPrice>
+    <created_at>2022-04-02 10:24:54</created_at>
+    <updated_at>2022-04-02 10:24:54</updated_at>
+  </book>
+  <book>
+    <id>13</id>
+    <bookName>book of privilege 0</bookName>
+    <bookDesc>book of privilege 0</bookDesc>
+    <bookPrivilege>0</bookPrivilege>
+    <bookPrice>50</bookPrice>
+    <created_at>2022-04-03 11:43:33</created_at>
+    <updated_at>2022-04-03 11:43:33</updated_at>
+  </book>
+  <book>
+    <id>16</id>
+    <bookName>Harry Potter</bookName>
+    <bookDesc>Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley, all of whom are students at Hogwarts School of Witchcraft and Wizardry.</bookDesc>
+    <bookPrivilege>1</bookPrivilege>
+    <bookPrice>50</bookPrice>
+    <created_at>2022-04-04 02:14:33</created_at>
+    <updated_at>2022-04-04 02:14:33</updated_at>
+  </book>
+  <book>
+    <id>17</id>
+    <bookName>Little Red Riding Hood</bookName>
+    <bookDesc>"Little Red Riding Hood" is a European fairy tale about a young girl and a Big Bad Wolf. Its origins can be traced back to several pre-17th century European folk tales. The two best known versions were written by Charles Perrault and the Brothers Grimm.</bookDesc>
+    <bookPrivilege>1</bookPrivilege>
+    <bookPrice>50</bookPrice>
+    <created_at>2022-04-04 02:15:49</created_at>
+    <updated_at>2022-04-04 02:15:49</updated_at>
+  </book>
 </books>
