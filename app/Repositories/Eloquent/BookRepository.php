@@ -105,17 +105,57 @@ class BookRepository implements BookRepositoryInterface {
     }
 
     public function bookXML() {
-        echo "<br><br><br>";
+        $query = DB::select('select * from books');
+        $booksArray = array();
+        if ($result = $query) {
+            echo "<br><br><br>";
+            $xml = new DOMDocument("1.0");
+            $xml->formatOutput = true;
+            $bookelement = $xml->createElement("books");
+            $xml->appendChild($bookelement);
+            foreach ($query as $row) {
+                $bookelement1 = $xml->createElement("book");
+                $bookelement->appendChild($bookelement1);
+                $rowArray = (array) $row;
+
+                $id = $xml->createElement("id", $rowArray['id']);
+                $bookelement1->appendChild($id);
+
+                $bookName = $xml->createElement("bookName", $rowArray['bookName']);
+                $bookelement1->appendChild($bookName);
+                
+                $bookDesc = $xml->createElement("bookDesc", $rowArray['bookDesc']);
+                $bookelement1->appendChild($bookDesc);
+                
+                $bookPrivilege = $xml->createElement("bookPrivilege", $rowArray['bookPrivilege']);
+                $bookelement1->appendChild($bookPrivilege);
+                
+                $bookPrice = $xml->createElement("bookPrice", $rowArray['bookPrice']);
+                $bookelement1->appendChild($bookPrice);
+                
+                $created_at = $xml->createElement("created_at", $rowArray['created_at']);
+                $bookelement1->appendChild($created_at);
+                
+                $updated_at = $xml->createElement("updated_at", $rowArray['updated_at']);
+                $bookelement1->appendChild($updated_at);
+            }
+            $xml->save("book.xml");
+        }
+        
         $xmlString = new DOMDocument('1.0', 'UTF-8');
         $xmlString->load('book.xml');
+        
         $xslString = new DOMDocument('1.0', 'UTF-8');
         $xslString->load('book.xsl');
+        
         $xslt = new XSLTProcessor();
         $xslt->importStyleSheet($xslString);
+        
         $xmldoc = new DOMDocument('1.0', 'UTF-8');
         $xmldoc->load("book.xml");
-        print $xslt->transformToXML($xmldoc);
         
+        print $xslt->transformToXML($xmldoc);
+
         return view('bookXML');
     }
 
@@ -149,8 +189,8 @@ class BookRepository implements BookRepositoryInterface {
                     $red = redirect('book/books')->with('Failed', 'Unexepected Error Occured');
                 }
             }
-            return $red;
         }
+        return $red;
     }
 
 public function OwnedBookXML() {
@@ -180,7 +220,6 @@ public function OwnedBookXML() {
                 $rowArray = (array)$row;
                 $userID = $xml->createElement("userID", $rowArray['userID']);
                 $ownedbook->appendChild($userID);
-
                 $bookID = $xml->createElement("bookID", $rowArray['bookID']);
                 $ownedbook->appendChild($bookID);
             }
@@ -197,5 +236,22 @@ public function OwnedBookXML() {
             print $xslt->transformToXML($xmldoc);
             
     }
-
+    
+    public function topup(){
+        return view('book.topup');
+    }
+    
+    public function topupped(Request $request){
+        $amount = $request->get('topup');
+        $userID = $request->get('userID');
+        $originalTokenCount = $request->get('userTokens');
+        $finalTokenCount = $originalTokenCount + $amount;
+        $addToken = DB::update('update users set tokens=? where id=?', [$finalTokenCount, $userID]);
+        if ($addToken) {
+                    $red = redirect('book/books')->with('Success', 'You have successfully  topupped ?', $amount);
+                } else {
+                    $red = redirect('book/books')->with('Failed', 'Unexepected Error Occured');
+                }
+        return $red;
+    }
 }

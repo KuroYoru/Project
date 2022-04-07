@@ -68,13 +68,13 @@
                 </a>
                 <a href="/home" class="w3-bar-item w3-button">HOME</a>
                 <a href="/book/books" class="w3-bar-item w3-button w3-hide-small"><i class="	fa fa-thumbs-o-up"></i> NEW ARRIVALS</a>
-                <a href="/book/bookXML" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> CURRENT BOOKS LIST</a>
+                
                 @if (auth()->check() && auth()->user()->memberStatus ==1)
+                <a href="/book/bookXML" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> CURRENT BOOKS LIST</a>
                 <a href="/book/showOwnedBookXML" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> OWNED BOOKS LIST</a>
+                <a href="/book/topup" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-shopping-cart"></i> Top Up</a>
                 @endif
-                <a href="/checkout" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-shopping-cart"></i> CHECKOUT</a>
 
-                </a>
                 <!-- Right Side Of Navbar -->
 
                 <!-- Authentication Links -->

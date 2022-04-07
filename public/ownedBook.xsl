@@ -7,11 +7,19 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:template match="/">
         <html>
-            
-
             <head>
                 <title>Owned Book List</title>
-                
+                <style>
+                    th {
+                    background-color: pink;
+                    color: black;
+                    
+                    }
+                    tr:nth-child(even) {background-color: #f2f2f2;}
+                    td{
+                    padding:20;
+                    }
+                </style>
             </head>
             <body>
                 <h1>Owned Book List</h1>
@@ -35,7 +43,7 @@
                 </table>
                 <br></br>
                 <tr>
-                        <a href="books" class="btn btn-warning">Back</a>
+                    <a href="books" class="btn btn-warning">Back</a>
                 </tr>
             </body>
         </html>

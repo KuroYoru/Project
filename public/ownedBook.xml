@@ -2,7 +2,11 @@
 <ownedbooks>
   <ownedbook>
     <userID>1</userID>
-    <bookID>4</bookID>
+    <bookID>6</bookID>
+  </ownedbook>
+  <ownedbook>
+    <userID>1</userID>
+    <bookID>12</bookID>
   </ownedbook>
   <ownedbook>
     <userID>103</userID>
@@ -11,5 +15,13 @@
   <ownedbook>
     <userID>103</userID>
     <bookID>6</bookID>
+  </ownedbook>
+  <ownedbook>
+    <userID>103</userID>
+    <bookID>10</bookID>
+  </ownedbook>
+  <ownedbook>
+    <userID>104</userID>
+    <bookID>10</bookID>
   </ownedbook>
 </ownedbooks>

@@ -30,4 +30,8 @@ interface BookRepositoryInterface {
     public function bought(Request $request);
     
     public function OwnedBookXML();
+    
+    public function topup();
+    
+    public function topupped(Request $request);
 }

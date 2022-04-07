@@ -9,6 +9,17 @@
         <html>
             <head>
                 <title>Current Books List</title>
+                <style>
+                    th {
+                    background-color: pink;
+                    color: black;
+                    
+                    }
+                    tr:nth-child(even) {background-color: #f2f2f2;}
+                    td{
+                    padding:20;
+                    }
+                </style>
             </head>
             <body>
                 <h1>Current Books List</h1>

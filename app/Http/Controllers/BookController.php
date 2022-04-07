@@ -94,12 +94,20 @@ class BookController extends Controller {
         return $this->repository->buy($id);
     }
     
-    public function  bought(Request $request){
+    public function bought(Request $request){
         return $this->repository->bought($request);
     }
     
     public function OwnedBookXML(){
         return $this->repository->OwnedBookXML();
+    }
+    
+    public function topup(){
+        return $this->repository->topup();
+    }
+    
+    public function topupped(Request $request){
+        return $this->repository->topupped($request);
     }
 
 }

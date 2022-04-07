@@ -24,6 +24,9 @@ Route::get('book/books/{book}/buy','BookController@buy')->name('buy');
 Route::get('/', 'BookController@bought');
 Route::get('/book/bookXML', 'BookController@bookXML')->name('bookXML');
 Route::get('/book/showOwnedBookXML', 'BookController@OwnedBookXML')->name('OwnedBookXML');
+Route::get('/book/topup', 'BookController@topup')->name('TopUp');
+Route::get('/', 'BookController@topupped')->name('TopUpped');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
